@@ -2,6 +2,35 @@
 title: Component Changelog
 ---
 
+## V1.3.7
+
+Release Date: 2026-06-25
+
+This release advances the ant-design upstream sync to **6.4.5** and backfills the missing fixes (#58234 / #58214 / #58314 / #58371 / #58339), makes **Tabs panes mount lazily**, fixes **Pagination not emitting the update event in some scenarios** and **Table overriding the consumer's `components.header.table` when merging aria props**, and upgrades the `@v-c` chain (table 1.1.6 cell memo, virtual-list 1.0.9 height perf) for better performance.
+
+**🐞 Fixes**
+
+* fix: sync ant-design upstream changes (6.4.4 → 6.4.5) — [#613](https://github.com/antdv-next/antdv-next/pull/613)
+* fix(tabs): lazily mount panes via `@v-c/tabs` 1.1.1 — [#612](https://github.com/antdv-next/antdv-next/pull/612)
+* fix(pagination): some scenarios did not trigger the update event
+* fix(table): preserve the consumer's `components.header.table` when merging aria props
+* fix: sync ant-design upstream fixes (#58234 #58214 #58314 #58371 #58339)
+* docs(locale): fill missing nb_NO (Norwegian) keys (#58439)
+
+**🔧 Types**
+
+* refactor(table): add a typed contract to HeaderTable
+
+**🧪 Tests**
+
+* test: reduce spurious deprecation warnings in demos and tests
+* test: update snapshots
+
+**🧰 Dependencies**
+
+* chore(deps): upgrade the `@v-c` chain — table 1.1.6 (cell memo) + virtual-list 1.0.9 (height perf) — [#609](https://github.com/antdv-next/antdv-next/pull/609)
+* chore: upgrade dependencies
+
 ## V1.3.6
 
 Release Date: 2026-06-18

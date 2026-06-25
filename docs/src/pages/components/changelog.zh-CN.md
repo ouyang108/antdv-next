@@ -2,6 +2,35 @@
 title: 组件更新日志
 ---
 
+## V1.3.7
+
+发布日期：2026-06-25
+
+本次版本将 ant-design 上游同步推进到 **6.4.5**，并补齐 #58234 / #58214 / #58314 / #58371 / #58339 等遗漏修复；同时让 **Tabs 面板懒挂载**、修复 **Pagination 部分场景未触发更新事件**、**Table 合并 aria 属性时覆盖消费方 `components.header.table`** 等问题，升级 `@v-c` 链路（table 1.1.6 单元格 memo、virtual-list 1.0.9 高度性能）以提升性能。
+
+**🐞 问题修复 Fixes**
+
+* fix：同步 ant-design 上游变更（6.4.4 → 6.4.5）—— [#613](https://github.com/antdv-next/antdv-next/pull/613)
+* fix(tabs)：通过 `@v-c/tabs` 1.1.1 懒挂载面板 —— [#612](https://github.com/antdv-next/antdv-next/pull/612)
+* fix(pagination)：修复部分场景未触发更新事件
+* fix(table)：合并 aria 属性时保留消费方传入的 `components.header.table`
+* fix：同步 ant-design 上游修复（#58234 #58214 #58314 #58371 #58339）
+* docs(locale)：补齐缺失的 nb_NO（挪威语）文案（#58439）
+
+**🔧 类型优化 Types**
+
+* refactor(table)：为 HeaderTable 补充类型契约
+
+**🧪 测试 Tests**
+
+* test：减少 demo 与测试中的冗余弃用告警
+* test：更新快照
+
+**🧰 依赖更新 Dependencies**
+
+* chore(deps)：升级 `@v-c` 链路 —— table 1.1.6（单元格 memo）+ virtual-list 1.0.9（高度性能）—— [#609](https://github.com/antdv-next/antdv-next/pull/609)
+* chore：升级依赖
+
 ## V1.3.6
 
 发布日期：2026-06-18
