@@ -17,7 +17,7 @@ English · [中文](./README.zh-CN.md)
 
 ## ❤️ Sponsors
 
-| <a href="https://ergouzi.life/register?utm_source=antdv-next"><img src="https://nzj13gqqmj.ufs.sh/f/7vCb7ZuKZQXM8I2IHQXhPqNEAXV4gJm0LzopUFvck3bCKG1e" width="80" alt="二狗子中转"></a> | <a href="https://penna.pro"><img src="https://penna.pro/logo.svg" width="80" alt="Penna Note"></a> | <a href="https://jeesite.com/"><img src="https://jeesite.com/assets/images/logo.png" width="80" alt="JeeSite 低代码"></a> |
+| <a href="https://ergouzi.life/register?utm_source=antdv-next"><img src="https://nzj13gqqmj.ufs.sh/f/7vCb7ZuKZQXM8I2IHQXhPqNEAXV4gJm0LzopUFvck3bCKG1e" width="80" alt="二狗子中转"></a> | <a href="https://penna.pro"><img src="https://penna.pro/logo.svg" width="80" alt="Penna Note"></a> | <a href="https://jeesite.com/?utm_source=antdv-next"><img src="https://jeesite.com/assets/images/logo.png" width="80" alt="JeeSite 低代码"></a> |
 | :-: | :-: | :-: |
 
 </div>
