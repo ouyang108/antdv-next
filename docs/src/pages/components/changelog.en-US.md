@@ -2,6 +2,38 @@
 title: Component Changelog
 ---
 
+## V1.4.4
+
+Release Date: 2026-07-20
+
+This release advances the ant-design upstream sync past **6.5.1** to `78c3d84619` ([#658](https://github.com/antdv-next/antdv-next/pull/658), [#664](https://github.com/antdv-next/antdv-next/pull/664)). Its main theme is **APIs that were declared and documented but never actually wired up**: Form `getFieldInstance` always returned `undefined`, Timeline's three render props were ignored, and Tree's `rootStyle` was silently discarded. It also makes the style and token build scripts read component sources directly instead of bundled output.
+
+**🐞 Fixes**
+
+* fix(form): `getFieldInstance(name)` now returns the rendered control instance instead of always returning `undefined`. The registry key no longer goes through `getFieldId`, so lookups work whether or not the Form declares a `name`, and `focusField` now prefers the control's own `focus()` before falling back to the DOM node ([#665](https://github.com/antdv-next/antdv-next/pull/665), fixes [#663](https://github.com/antdv-next/antdv-next/issues/663))
+* fix(timeline): wire up the `dotRender` / `labelRender` / `contentRender` props and slots — they were declared and documented but ignored by `useItems`, and leaked into the Steps pass-through. Slot results are normalized so a conditional slot that renders nothing correctly falls back to the item's `icon` / `title` / `content` ([#656](https://github.com/antdv-next/antdv-next/pull/656), fixes [#653](https://github.com/antdv-next/antdv-next/issues/653))
+* fix(tabs): `labelRender` / `contentRender` now infer their item type from `items` instead of hard-coding `TabItem`, and `InstanceType<typeof Tabs>` keeps the exposed `TabsRef` ([#661](https://github.com/antdv-next/antdv-next/pull/661), fixes [#660](https://github.com/antdv-next/antdv-next/issues/660))
+* fix(tree): restore `rootStyle` compatibility — it was inherited from the underlying props but silently overwritten by the semantic root style, making it a no-op. It now works again and is deprecated in favour of `styles.root` (#58709)
+* fix(input): a custom Search `enterButton` now syncs `disabled` with the form context, and a `loading` supplied on the custom Button is no longer overwritten (#58726)
+* fix(grid): support zero `flex` values — `flex={0}` and responsive `xs={{ flex: 0 }}` were dropped by a truthiness check (#58719)
+* fix(tag): closing a link tag no longer triggers navigation (#58720)
+* fix(splitter): correct percentage-based ARIA value ranges (#58702)
+* fix(style): respect the `lineWidth` / `lineType` border tokens in Typography, Tree, Collapse and Layout instead of hardcoding `1px solid`; the rendered CSS is unchanged at the default theme and only differs once those tokens are customized (#58740, #58741, #58742, #58743)
+* fix(segmented, radio): drop downstream-only `prefers-reduced-motion` styles that upstream never had, restoring parity with the React sources ([#654](https://github.com/antdv-next/antdv-next/pull/654))
+* fix(wave): avoid touching global `window` in the `attachListener` watch callback, which runs on Vue's async scheduler and could fire after the environment is torn down ([#662](https://github.com/antdv-next/antdv-next/pull/662))
+
+**📖 Docs**
+
+* docs(timeline): add a `dotRender` demo ([#656](https://github.com/antdv-next/antdv-next/pull/656))
+* docs(input-number): add a feedback suffix debug demo (#58703)
+* docs(anchor): correct the `offsetTop` default value (#58710)
+* docs(select): preserve the typed search text in the remote users demo (#58736)
+* docs(table): fix the English API links ([#657](https://github.com/antdv-next/antdv-next/pull/657))
+
+**🧰 Infrastructure**
+
+* refactor(build): `build:style` and `build:token-statistic` now load component sources through a vite SSR runner instead of importing `dist/components.js`, so a stale build can no longer produce outdated CSS or token statistics. Both outputs were verified identical to the dist-based runs ([#654](https://github.com/antdv-next/antdv-next/pull/654))
+
 ## V1.4.3
 
 Release Date: 2026-07-15

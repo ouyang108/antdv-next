@@ -2,6 +2,38 @@
 title: 组件更新日志
 ---
 
+## V1.4.4
+
+发布日期：2026-07-20
+
+本次版本将 ant-design 上游同步从 **6.5.1** 继续推进到 `78c3d84619`（[#658](https://github.com/antdv-next/antdv-next/pull/658)、[#664](https://github.com/antdv-next/antdv-next/pull/664)）。主线是修复一批**已声明、已写进文档、但实际从未接通的 API**：Form 的 `getFieldInstance` 恒返回 `undefined`、Timeline 的三个 render 属性被完全忽略、Tree 的 `rootStyle` 被静默丢弃。同时将样式与 token 构建脚本改为直接读取组件源码，不再依赖打包产物。
+
+**🐞 问题修复 Fixes**
+
+* fix(form)：`getFieldInstance(name)` 现在返回渲染出的控件实例，而不再恒为 `undefined`。注册键不再经过 `getFieldId`，因此 Form 是否声明 `name` 都不影响查找；`focusField` 也改为优先调用控件自身的 `focus()`，再回落到 DOM 节点（[#665](https://github.com/antdv-next/antdv-next/pull/665)，修复 [#663](https://github.com/antdv-next/antdv-next/issues/663)）
+* fix(timeline)：接通 `dotRender` / `labelRender` / `contentRender` 属性与插槽——三者此前已声明并写入文档，但 `useItems` 完全忽略，且会透传进 Steps。插槽返回值现在会做规范化处理，条件插槽渲染为空时可正确回落到 item 的 `icon` / `title` / `content`（[#656](https://github.com/antdv-next/antdv-next/pull/656)，修复 [#653](https://github.com/antdv-next/antdv-next/issues/653)）
+* fix(tabs)：`labelRender` / `contentRender` 的 item 类型改为从 `items` 推断，不再硬编码为 `TabItem`；`InstanceType<typeof Tabs>` 保留暴露的 `TabsRef`（[#661](https://github.com/antdv-next/antdv-next/pull/661)，修复 [#660](https://github.com/antdv-next/antdv-next/issues/660)）
+* fix(tree)：恢复 `rootStyle` 兼容——该属性虽从底层 props 继承，但会被语义化根样式静默覆盖，实际不生效。现已恢复可用，并标记为废弃，建议改用 `styles.root`（#58709）
+* fix(input)：Search 自定义 `enterButton` 的 `disabled` 现在与表单上下文同步，且不再覆盖用户在自定义 Button 上传入的 `loading`（#58726）
+* fix(grid)：支持 `flex` 取值为 0——`flex={0}` 与响应式 `xs={{ flex: 0 }}` 此前被真值判断丢弃（#58719）
+* fix(tag)：关闭链接形态的标签不再触发页面跳转（#58720）
+* fix(splitter)：修正基于百分比的 ARIA 取值范围（#58702）
+* fix(style)：Typography、Tree、Collapse、Layout 改用 `lineWidth` / `lineType` 边框 token，不再硬编码 `1px solid`；默认主题下产出的 CSS 完全一致，仅在自定义这两个 token 时才产生差异（#58740、#58741、#58742、#58743）
+* fix(segmented, radio)：移除上游从未有过的下游自有 `prefers-reduced-motion` 样式，与 React 源码保持一致（[#654](https://github.com/antdv-next/antdv-next/pull/654)）
+* fix(wave)：`attachListener` 的 watch 回调不再访问全局 `window`——该回调走 Vue 异步调度，可能在运行环境销毁后才触发（[#662](https://github.com/antdv-next/antdv-next/pull/662)）
+
+**📖 文档 Docs**
+
+* docs(timeline)：新增 `dotRender` demo（[#656](https://github.com/antdv-next/antdv-next/pull/656)）
+* docs(input-number)：新增反馈图标 suffix 的 Debug demo（#58703）
+* docs(anchor)：修正 `offsetTop` 的默认值（#58710）
+* docs(select)：远程搜索用户 demo 保留已输入的搜索文本（#58736）
+* docs(table)：修正英文文档的 API 链接（[#657](https://github.com/antdv-next/antdv-next/pull/657)）
+
+**🧰 工程 Infrastructure**
+
+* refactor(build)：`build:style` 与 `build:token-statistic` 改为通过 vite SSR runner 加载组件源码，不再 import `dist/components.js`，避免陈旧的构建产物产出过时的 CSS 或 token 统计；两者产物均已验证与原基于 dist 的结果完全一致（[#654](https://github.com/antdv-next/antdv-next/pull/654)）
+
 ## V1.4.3
 
 发布日期：2026-07-15
