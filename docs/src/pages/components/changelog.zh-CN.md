@@ -15,7 +15,7 @@ title: 组件更新日志
 * fix(tabs)：`labelRender` / `contentRender` 的 item 类型改为从 `items` 推断，不再硬编码为 `TabItem`；`InstanceType<typeof Tabs>` 保留暴露的 `TabsRef`（[#661](https://github.com/antdv-next/antdv-next/pull/661)，修复 [#660](https://github.com/antdv-next/antdv-next/issues/660)）
 * fix(tree)：恢复 `rootStyle` 兼容——该属性虽从底层 props 继承，但会被语义化根样式静默覆盖，实际不生效。现已恢复可用，并标记为废弃，建议改用 `styles.root`（#58709）
 * fix(input)：Search 自定义 `enterButton` 的 `disabled` 现在与表单上下文同步，且不再覆盖用户在自定义 Button 上传入的 `loading`（#58726）
-* fix(grid)：支持 `flex` 取值为 0——`flex={0}` 与响应式 `xs={{ flex: 0 }}` 此前被真值判断丢弃（#58719）
+* fix(grid)：支持 `flex` 取值为 0——`:flex="0"` 与响应式 `:xs="{ flex: 0 }"` 此前被真值判断丢弃（#58719）
 * fix(tag)：关闭链接形态的标签不再触发页面跳转（#58720）
 * fix(splitter)：修正基于百分比的 ARIA 取值范围（#58702）
 * fix(style)：Typography、Tree、Collapse、Layout 改用 `lineWidth` / `lineType` 边框 token，不再硬编码 `1px solid`；默认主题下产出的 CSS 完全一致，仅在自定义这两个 token 时才产生差异（#58740、#58741、#58742、#58743）

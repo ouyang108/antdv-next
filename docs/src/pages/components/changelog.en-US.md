@@ -15,7 +15,7 @@ This release advances the ant-design upstream sync past **6.5.1** to `78c3d84619
 * fix(tabs): `labelRender` / `contentRender` now infer their item type from `items` instead of hard-coding `TabItem`, and `InstanceType<typeof Tabs>` keeps the exposed `TabsRef` ([#661](https://github.com/antdv-next/antdv-next/pull/661), fixes [#660](https://github.com/antdv-next/antdv-next/issues/660))
 * fix(tree): restore `rootStyle` compatibility — it was inherited from the underlying props but silently overwritten by the semantic root style, making it a no-op. It now works again and is deprecated in favour of `styles.root` (#58709)
 * fix(input): a custom Search `enterButton` now syncs `disabled` with the form context, and a `loading` supplied on the custom Button is no longer overwritten (#58726)
-* fix(grid): support zero `flex` values — `flex={0}` and responsive `xs={{ flex: 0 }}` were dropped by a truthiness check (#58719)
+* fix(grid): support zero `flex` values — `:flex="0"` and responsive `:xs="{ flex: 0 }"` were dropped by a truthiness check (#58719)
 * fix(tag): closing a link tag no longer triggers navigation (#58720)
 * fix(splitter): correct percentage-based ARIA value ranges (#58702)
 * fix(style): respect the `lineWidth` / `lineType` border tokens in Typography, Tree, Collapse and Layout instead of hardcoding `1px solid`; the rendered CSS is unchanged at the default theme and only differs once those tokens are customized (#58740, #58741, #58742, #58743)
